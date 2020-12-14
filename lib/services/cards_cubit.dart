@@ -17,7 +17,6 @@ class CardsCubit extends Cubit<List<CardModel>> {
   Timer _timer;
 
   void _autoUpdate() {
-    // За неимением сокетов будем актуализировать инфу вручную каждые 7 секунд.
     _timer?.cancel();
     _timer = Timer(Duration(seconds: 7), () {
       getAllCards().then((_) {
@@ -64,12 +63,12 @@ class CardsCubit extends Cubit<List<CardModel>> {
   }
 
   Future updateCard(CardModel card) async {
-    // Не смотря на возвращаемый status code 200 при попытке обновить карточку,
-    // она по факту все равно не обновляется - видимо на бэке какой-то баг :-\
-    // Потому, как временное решение, удаляем карточку и создаем новый экземпляр:
+    /// Не смотря на возвращаемый status code 200 при попытке обновить карточку,
+    /// она по факту все равно не обновляется - видимо на бэке какой-то баг :-\
+    /// Потому, как временное решение, удаляем карточку и создаем новый экземпляр:
     deleteCard(card.id);
     createCard(boardColumn: card.column, text: card.text);
-    // Нормальное решение пока закомментил:
+    /// Нормальное решение пока закомментил:
     //
     // Map<String, dynamic> params = {
     //   'row': card.column.toInt,

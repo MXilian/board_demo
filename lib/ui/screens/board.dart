@@ -52,6 +52,8 @@ class BoardScreen extends StatelessWidget {
                   width: 100,
                   height: 40,
                   child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6)),
                     color: Theme.of(context).errorColor.withOpacity(0.66),
                     child: Text('Logout', style: TextStyle(fontSize: 16)),
                     onPressed: () {

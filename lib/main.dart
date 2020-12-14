@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
             else
               return Container(
                 alignment: Alignment.center,
-                color: Colors.black87,
+                color: Colors.white12,
                 child: CircularProgressIndicator(),
               );
           }),
