@@ -93,7 +93,8 @@ class MainBloc extends Bloc<MainBlocEvents, MainBlocState> {
         if (token == null)
           add(MainBlocEvents._open_auth_page);
         else {
-          _cardsService = CardsCubit(_connector);
+          if (_cardsService == null)
+            _cardsService = CardsCubit(_connector);
           add(MainBlocEvents._open_board_page);
         }
       });
