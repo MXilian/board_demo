@@ -47,19 +47,21 @@ class HomePage extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => MainBloc(),
-      child: BlocBuilder<MainBloc, MainBlocState>(
-          builder: (context, state) {
-            if (state.page == Screen.auth || state.page == Screen.register)
-              return AuthScreen();
-            else if (state.page == Screen.board)
-              return BoardScreen();
-            else
-              return Container(
-                alignment: Alignment.center,
-                color: Colors.white12,
-                child: CircularProgressIndicator(),
-              );
-          }),
+      child: SafeArea(
+        child: BlocBuilder<MainBloc, MainBlocState>(
+            builder: (context, state) {
+              if (state.page == Screen.auth || state.page == Screen.register)
+                return AuthScreen();
+              else if (state.page == Screen.board)
+                return BoardScreen();
+              else
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.white12,
+                  child: CircularProgressIndicator(),
+                );
+            }),
+      ),
     );
   }
 }
