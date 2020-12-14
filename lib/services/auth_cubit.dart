@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trello_demo/data/abstracts/connector.dart';
+import 'package:trello_demo/abstracts/connector.dart';
 import 'package:trello_demo/data/models/error.dart';
 import 'package:trello_demo/data/values/constants.dart';
 

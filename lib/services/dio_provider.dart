@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:trello_demo/data/abstracts/connector.dart';
+import 'package:trello_demo/abstracts/connector.dart';
 import 'package:trello_demo/data/models/error.dart';
 import 'package:trello_demo/data/values/constants.dart';
 
