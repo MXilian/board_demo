@@ -10,7 +10,9 @@ import 'package:trello_demo/data/values/board.dart';
 class CardsCubit extends Cubit<List<CardModel>> {
   final Connector _connector;
 
-  CardsCubit(this._connector) : super([]);
+  CardsCubit(this._connector) : super([]) {
+    getAllCards();
+  }
 
   List<CardModel> get cards => state;
 
@@ -30,7 +32,7 @@ class CardsCubit extends Cubit<List<CardModel>> {
     _timer?.cancel();
   }
   void runAutoUpdate() {
-    print('Auto updates resumed');
+    print('Auto updates started');
     _autoUpdate();
   }
 

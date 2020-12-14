@@ -64,7 +64,7 @@ class DioProvider extends Connector {
     try {
       response = await _dio.post(path, data: params);
     } on DioError catch(error) {
-      return ErrorMsg(error.message);
+      return ErrorMsg(error.response?.data?.toString() ?? error.message);
     }
     if (response.statusCode == 200 || response.statusCode == 201)
       return response.data;
@@ -77,7 +77,7 @@ class DioProvider extends Connector {
     try {
       response = await _dio.patch(path, data: params);
     } on DioError catch(error) {
-      return ErrorMsg(error.message);
+      return ErrorMsg(error.response?.data?.toString() ?? error.message);
     }
     if (response.statusCode == 200)
       return response.data;
@@ -90,7 +90,7 @@ class DioProvider extends Connector {
     try {
       response = await _dio.delete(path);
     } on DioError catch(error) {
-      return ErrorMsg(error.message);
+      return ErrorMsg(error.response?.data?.toString() ?? error.message);
     }
     if (response.statusCode == 204)
       return true;

@@ -88,13 +88,14 @@ class MainBloc extends Bloc<MainBlocEvents, MainBlocState> {
       _connector = DioProvider();
       SharedPreferences preferences = await SharedPreferences.getInstance();
       _authService = AuthCubit(_connector, preferences);
-      _cardsService = CardsCubit(_connector);
       _authStatusSubscription?.cancel();
       _authStatusSubscription = _authService.listen((String token) {
         if (token == null)
           add(MainBlocEvents._open_auth_page);
-        else
+        else {
+          _cardsService = CardsCubit(_connector);
           add(MainBlocEvents._open_board_page);
+        }
       });
       if (_authService.state == null)
         yield state._copyWith(page: Screen.auth);
